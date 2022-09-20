@@ -17,7 +17,7 @@ open class EpubBook: NSObject {
     var spine = EpubSpine()
     var smils = EpubSmils()
     var version: Double?
-    var htmlURL: URL?
+    public var htmlURL: URL?
     
     public var opfResource: EpubResource!
     public var tocResource: EpubResource?
