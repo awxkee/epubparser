@@ -76,7 +76,7 @@ public class EpubParser: NSObject {
     ///   - unzipPath: Path to unzip the compressed epub.
     /// - Returns: The book cover as UIImage object
     /// - Throws: `FolioReaderError`
-    func parseCoverImage(_ epubPath: String, unzipPath: String) throws -> UIImage {
+    public func parseCoverImage(_ epubPath: String, unzipPath: String) throws -> UIImage {
         guard let book = try? readEpub(epubPath: epubPath, removeEpub: false, unzipPath: unzipPath),
               let coverImage = book.coverImage else {
             throw EPUBCoverNotAvailableError()
@@ -96,7 +96,7 @@ public class EpubParser: NSObject {
     ///   - unzipPath: Path to unzip the compressed epub.
     /// - Returns: The book title
     /// - Throws: `FolioReaderError`
-    func parseTitle(_ epubPath: String, unzipPath: String) throws -> String {
+    public func parseTitle(_ epubPath: String, unzipPath: String) throws -> String {
         guard let book = try? readEpub(epubPath: epubPath, removeEpub: false, unzipPath: unzipPath), let title = book.title else {
             throw EPUBTitleNotAvailableError()
         }
@@ -111,7 +111,7 @@ public class EpubParser: NSObject {
     ///   - unzipPath: Path to unzip the compressed epub.
     /// - Returns: The author name
     /// - Throws: `FolioReaderError`
-    func parseAuthorName(_ epubPath: String, unzipPath: String) throws -> String {
+    public func parseAuthorName(_ epubPath: String, unzipPath: String) throws -> String {
         guard let book = try? readEpub(epubPath: epubPath, removeEpub: false, unzipPath: unzipPath), let authorName = book.authorName else {
             throw EPUBAuthorNotAvailableError()
         }
@@ -126,7 +126,7 @@ public class EpubParser: NSObject {
     ///   - unzipPath: Path to unzip the compressed epub.
     /// - Returns: `FRBook` Object
     /// - Throws: `FolioReaderError`
-    func readEpub(epubPath withEpubPath: String, removeEpub: Bool = true, unzipPath: String) throws -> EpubBook {
+    public func readEpub(epubPath withEpubPath: String, removeEpub: Bool = true, unzipPath: String) throws -> EpubBook {
         epubPathToRemove = withEpubPath
         shouldRemoveEpub = removeEpub
 
