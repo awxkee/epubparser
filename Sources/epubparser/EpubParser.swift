@@ -158,8 +158,11 @@ public class EpubParser: NSObject {
         book.name = bookName
         try readContainer(with: bookBasePath)
         try readOpf(with: bookBasePath)
-        let url = try buildHtml(path: URL(fileURLWithPath: bookBasePath))
-        self.book.htmlURL = url
+        if let firstSpinePath = book.spine.spineReferences.first?.resource.fullHref,
+           let spineUrl = URL(string: firstSpinePath)?.deletingLastPathComponent() {
+            let url = try buildHtml(path: spineUrl)
+            self.book.htmlURL = url
+        }
         return self.book
     }
 
